@@ -16,11 +16,11 @@ public class CameraFollow : MonoBehaviour
         rocketTransform = rocket.GetComponent<Transform>();
         if (rocketTransform.position.z > 0f)
         {
-            transform.position = (rocketTransform.position + new Vector3(80f, 12f));
+            transform.position = (rocketTransform.position + new Vector3(80f, 15f));
         }
         else
         {
-            rocketY = rocketTransform.position.y + 12f;
+            rocketY = rocketTransform.position.y + 15f;
             transform.position = new Vector3(80f, rocketY);
         }
     }
