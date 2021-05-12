@@ -12,9 +12,20 @@ public class HoverDetect : MonoBehaviour
 
     public bool inZone = false;
 
+    AudioSource audioSource;
+
+    [SerializeField] AudioClip rewardSound;
+
+    [SerializeField] GameObject greenCircle;
+
+    [SerializeField] GameObject barrier;
+
+    bool completedHovering = false;
+
     void Start()
     {
         text = text.GetComponent<TextMeshPro>();
+        audioSource = GetComponent<AudioSource>();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -33,7 +44,7 @@ public class HoverDetect : MonoBehaviour
 
     void Update()
     {
-        if (inZone)
+        if (inZone && completedHovering == false)
         {
             timeHovering += Time.deltaTime;
             text.enabled = true;
@@ -43,6 +54,15 @@ public class HoverDetect : MonoBehaviour
         {
             timeHovering = 0;
             text.enabled = false;
+        }
+
+        if (inZone && timeHovering >= 10f && completedHovering == false)
+        {
+            audioSource.PlayOneShot(rewardSound);
+            text.enabled = false;
+            greenCircle.SetActive(true);
+            completedHovering = true;
+            Destroy(barrier);
         }
     }
 }
