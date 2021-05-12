@@ -38,10 +38,15 @@ public class CameraFollow : MonoBehaviour
 
         void tutorialSettings()
         {
-            //if (rocketTransform.position.y > 27f)
-           // {
+            if (rocketTransform.position.y > 30f)
+            {
                 transform.position = (rocketTransform.position + new Vector3(80f, 15f));
-            //}
+            }
+            else
+            {
+                rocketZ = rocketTransform.position.z;
+                transform.position = (new Vector3(80f, 45f, rocketZ));
+            }
         }
 
         void standardSettings()
