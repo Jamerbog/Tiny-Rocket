@@ -14,6 +14,8 @@ public class CameraFollow : MonoBehaviour
     Scene scene;
     int sceneInt;
 
+    float camZ;
+
     Transform rocketTransform;
 
     private void Start()
@@ -26,6 +28,8 @@ public class CameraFollow : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody>();
         rocketTransform = rocket.GetComponent<Transform>();
+        rocketZ = rocketTransform.position.z;
+        camZ = transform.position.z;
 
         if (sceneInt == 1)
         {
@@ -44,25 +48,14 @@ public class CameraFollow : MonoBehaviour
             }
             else
             {
-                rocketZ = rocketTransform.position.z;
+                
                 transform.position = (new Vector3(80f, 45f, rocketZ));
             }
         }
 
         void standardSettings()
         {
-            if ((rocketTransform.position.y > 27f) || (rocketTransform.position.z > 0f) && !(rocketTransform.position.y > 27f))
-            {
-                if (rocketTransform.position.z > 0f)
-                {
-                    transform.position = (rocketTransform.position + new Vector3(80f, 15f));
-                }
-                else
-                {
-                    rocketY = rocketTransform.position.y + 15f;
-                    transform.position = new Vector3(80f, rocketY);
-                }
-            }
+            transform.position = rocketTransform.position + new Vector3(80f, 15f);
         }
     }
 }
