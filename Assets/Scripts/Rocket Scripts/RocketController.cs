@@ -50,6 +50,9 @@ public class RocketController : MonoBehaviour
             case "Friendly":
                 print("OK");
                 break;
+            case "Player":
+                print("OK");
+                break;
             case "Start":
                 print("Start");
                 rigidbody.freezeRotation = false;
