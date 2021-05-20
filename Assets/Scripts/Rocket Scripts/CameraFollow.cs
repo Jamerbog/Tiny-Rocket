@@ -35,6 +35,12 @@ public class CameraFollow : MonoBehaviour
         {
             tutorialSettings();
         }
+
+        if (sceneInt == 3)
+        {
+            underwaterSettings();
+        }
+
         else
         {
             standardSettings();
@@ -56,6 +62,19 @@ public class CameraFollow : MonoBehaviour
         void standardSettings()
         {
             transform.position = rocketTransform.position + new Vector3(80f, 15f);
+        }
+
+        void underwaterSettings()
+        {
+            if (rocketTransform.position.y > 500f)
+            {
+                transform.position = (rocketTransform.position + new Vector3(80f, 15f));
+            }
+            else
+            {
+
+                transform.position = (new Vector3(80f, 45f, rocketZ));
+            }
         }
     }
 }
