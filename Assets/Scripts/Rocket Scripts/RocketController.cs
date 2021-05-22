@@ -20,7 +20,9 @@ public class RocketController : MonoBehaviour
 
     Rigidbody rigidbody;
     AudioSource audio_source;
+    Scene scene;
 
+    int sceneInt;
     enum State { Alive, Dying, Transcending };
     [SerializeField] State state = State.Alive;
 
@@ -28,6 +30,7 @@ public class RocketController : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         audio_source = GetComponent<AudioSource>();
+        sceneInt = scene.buildIndex;
     }
 
     void Update()
@@ -96,9 +99,12 @@ public class RocketController : MonoBehaviour
 
     private void LoadNextScene()
     {
-        rewardParticles.Stop();
-        int currentScene = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentScene + 1);
+        if ((sceneInt == 3) == false)
+        {
+            rewardParticles.Stop();
+            int currentScene = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(currentScene + 1);
+        }
     }
     private void RespondToThrustInput()
     {

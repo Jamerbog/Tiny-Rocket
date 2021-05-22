@@ -54,8 +54,8 @@ public class CameraFollow : MonoBehaviour
             }
             else
             {
-                
-                transform.position = (new Vector3(80f, 45f, rocketZ));
+                print("Burger");
+                transform.position = new Vector3(80f, 45f, rocketZ);
             }
         }
 
@@ -66,15 +66,7 @@ public class CameraFollow : MonoBehaviour
 
         void underwaterSettings()
         {
-            if (rocketTransform.position.y > 500f)
-            {
-                transform.position = (rocketTransform.position + new Vector3(80f, 15f));
-            }
-            else
-            {
-
-                transform.position = (new Vector3(80f, 45f, rocketZ));
-            }
+            transform.position = new Vector3(80f, 45f, rocketZ);
         }
     }
 }
