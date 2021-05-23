@@ -20,6 +20,8 @@ public class HoverDetect : MonoBehaviour
 
     [SerializeField] GameObject barrier;
 
+    [SerializeField] GameObject whiteCircle;
+
     bool completedHovering = false;
 
     void Start()
@@ -61,6 +63,7 @@ public class HoverDetect : MonoBehaviour
             audioSource.PlayOneShot(rewardSound);
             text.enabled = false;
             greenCircle.SetActive(true);
+            whiteCircle.SetActive(false);
             completedHovering = true;
             Destroy(barrier);
         }

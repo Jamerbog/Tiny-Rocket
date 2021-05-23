@@ -99,12 +99,11 @@ public class RocketController : MonoBehaviour
 
     private void LoadNextScene()
     {
-        if ((sceneInt == 3) == false)
-        {
-            rewardParticles.Stop();
-            int currentScene = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(currentScene + 1);
-        }
+
+        rewardParticles.Stop();
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentScene + 1);
+        
     }
     private void RespondToThrustInput()
     {
